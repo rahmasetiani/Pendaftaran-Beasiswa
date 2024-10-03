@@ -60,7 +60,7 @@ $result = $conn->query($query);
                                 <td>" . htmlspecialchars($row['semester']) . "</td>
                                 <td>" . htmlspecialchars($row['last_ipk']) . "</td>
                                 <td>" . htmlspecialchars($row['beasiswa']) . "</td>                        
-                                <td class='text-center'><a href='/SERKOM/beasiswa/uploads/" . htmlspecialchars($row['syarat_berkas']) . "' target='_blank' <i class='fas fa-download'></i></td>
+                                <td class='text-center'><a href='/SERKOM/pendaftaran-beasiswa/uploads/" . htmlspecialchars($row['syarat_berkas']) . "' target='_blank' <i class='fas fa-download'></i></td>
                                 <td>";
 
                         // Check status ajuan 
