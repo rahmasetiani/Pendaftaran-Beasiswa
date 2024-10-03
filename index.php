@@ -42,6 +42,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </head>
 
 <body>
+<br><br>
     <h1>Selamat Datang di Sistem Pendaftaran Beasiswa</h1>
 
     <h2>Login Akun Pendaftaran Beasiswa</h2>
@@ -60,7 +61,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </form>
 
     <div class="menu">
-        <p>Belum punya akun? <a href="register.php">Register</a> untuk membuat akun.</p><br>
+        <p>Belum punya akun? <a href="register.php">Register</a> untuk membuat akun.</p><br><br><br>
     </div>
 </body>
 

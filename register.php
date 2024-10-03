@@ -28,6 +28,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 </head>
 <body>
+<br><br>
     <h1>Selamat Datang di Sistem Pendaftaran Beasiswa</h1>
 
     <h2>Registrasi Akun Pendaftaran Beasiswa</h2>
