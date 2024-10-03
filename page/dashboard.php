@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="../asset/css/style.css"> 
     <link rel="stylesheet" href="../asset/css/dashboard.css"> 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
     <style>
         .requirements {
             max-height: 0; /* Set max-height to 0 to hide */
@@ -59,7 +61,6 @@ session_start(); ?>
                         <li>Fotokopi KTM</li>
                         <li>Fotokopi transkrip nilai terakhir</li>
                         <li>Surat pernyataan tidak menerima beasiswa lain</li>
-                        <li>Pas foto terbaru</li>
                     </ul>
                 </div>
             </div>
@@ -78,7 +79,6 @@ session_start(); ?>
                         <li>Fotokopi KTM</li>
                         <li>Surat keterangan aktif dalam organisasi</li>
                         <li>Surat rekomendasi dari dosen</li>
-                        <li>Pas foto terbaru</li>
                     </ul>
                 </div>
             </div>
@@ -97,11 +97,19 @@ session_start(); ?>
                         <li>Fotokopi KTM</li>
                         <li>Sertifikat hafalan Quran (minimal 15 juz)</li>
                         <li>Surat rekomendasi dari pemuka agama/dosen</li>
-                        <li>Pas foto terbaru</li>
                     </ul>
                 </div>
             </div>
         </div>
+        <div class="container mt-5">
+        <h3 class="text-center">Grafik Jumlah Penerima Beasiswa Tahun 2022-2024</h3>
+        <div class="row justify-content-center"> <!-- Center the chart -->
+            <div class="col-md-6"> <!-- Adjust the column size to make it smaller -->
+                <canvas id="beasiswaChart" width="400" height="200"></canvas> <!-- Set smaller size -->
+            </div>
+        </div>
+    </div>
+</div>
     </div>
 </div>
 
@@ -123,6 +131,49 @@ session_start(); ?>
         </p>
     </div>
 </footer>
+
+<script>
+const ctx = document.getElementById('beasiswaChart').getContext('2d');
+const beasiswaChart = new Chart(ctx, {
+    type: 'bar', // You can change this to 'line', 'pie', etc., based on your preference
+    data: {
+        labels: ['Beasiswa Akademik', 'Beasiswa Non-Akademik', 'Beasiswa Hafiz Quran'], // Labels for each category
+        datasets: [
+            {
+                label: 'Jumlah Penerima Beasiswa - 2022',
+                data: [30, 15, 10], // Data for 2022
+                backgroundColor: 'rgba(76, 175, 80, 0.5)', // Color for this dataset
+                borderColor: 'rgba(76, 175, 80, 1)',
+                borderWidth: 1
+            },
+            {
+                label: 'Jumlah Penerima Beasiswa - 2023',
+                data: [25, 20, 15], // Data for 2023
+                backgroundColor: 'rgba(255, 165, 0, 0.5)', // Different color for this dataset
+                borderColor: 'rgba(255, 165, 0, 1)',
+                borderWidth: 1
+            },
+            {
+                label: 'Jumlah Penerima Beasiswa - 2024',
+                data: [20, 25, 10], // Data for 2024
+                backgroundColor: 'rgba(0, 123, 255, 0.5)', // Another color for this dataset
+                borderColor: 'rgba(0, 123, 255, 1)',
+                borderWidth: 1
+            }
+        ]
+    },
+    options: {
+        responsive: true,
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+});
+
+</script>
+
 
 <script>
     function toggleRequirements(id) {
