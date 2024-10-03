@@ -154,7 +154,7 @@ if(isset($_POST['submit'])) {
 
                 <!-- Tombol Submit -->
                 <div class="d-flex justify-content-between">
-                    <button type="submit" name="submit" id="submitBtn" class="btn btn-primary" disabled>Daftar</button>
+                    <button type="submit" name="submit" id="submitBtn" class="button">Daftar</button>
                     <button type="reset" class="btn btn-outline-danger">Batal</button>
                 </div>
             </form>
@@ -164,65 +164,78 @@ if(isset($_POST['submit'])) {
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
 
-    <!-- JavaScript Logic -->
-    <script>
+   <!-- JavaScript Logic -->
+<script>
     document.addEventListener('DOMContentLoaded', function () {
-    const ipkField = document.getElementById('ipk');
-    const beasiswaSelect = document.getElementById('beasiswa');
-    const submitBtn = document.getElementById('submitBtn');
-    const semesterSelect = document.getElementById('semester');
+        const ipkField = document.getElementById('ipk');
+        const beasiswaSelect = document.getElementById('beasiswa');
+        const submitBtn = document.getElementById('submitBtn');
+        const semesterSelect = document.getElementById('semester');
+        const emailField = document.getElementById('email');
+        const noHpField = document.getElementById('noHp');
+        
+        // Define IPK values based on semester
+        const ipkValues = {
+            1: 3.0,
+            2: 3.1,
+            3: 3.2,
+            4: 3.3,
+            5: 3.4,
+            6: 2.6,
+            7: 2.5,
+            8: 3.8,
+        };
 
-    // Define IPK values based on semester
-    const ipkValues = {
-        1: 3.0,
-        2: 3.1,
-        3: 3.2,
-        4: 3.3,
-        5: 3.4,
-        6: 2.6,
-        7: 2.5,
-        8: 3.8,
-    };
+        // Update IPK when semester changes
+        semesterSelect.addEventListener('change', function () {
+            const selectedSemester = semesterSelect.value;
+            const ipkValue = ipkValues[selectedSemester] || 0;
 
-    // Update IPK when semester changes
-    semesterSelect.addEventListener('change', function () {
-        const selectedSemester = semesterSelect.value;
-        const ipkValue = ipkValues[selectedSemester] || 0;
+            ipkField.value = ipkValue.toFixed(2);
+            document.getElementById('last_ipk').value = ipkValue;
 
-        ipkField.value = ipkValue.toFixed(2);
-        document.getElementById('last_ipk').value = ipkValue;
+            // Enable beasiswa select if IPK is >= 3
+            beasiswaSelect.disabled = ipkValue < 3;
+            if (ipkValue < 3) {
+                beasiswaSelect.value = '';
+            }
+        });
 
-        // Enable beasiswa select if IPK is >= 3
-        beasiswaSelect.disabled = ipkValue < 3;
-        if (ipkValue < 3) {
-            beasiswaSelect.value = '';
-        }
+        // Enable submit button always but show notification if validation fails
+        document.getElementById('beasiswaForm').addEventListener('submit', function (e) {
+            const nama = document.getElementById('nama').value;
+            const email = emailField.value;
+            const nomorhp = noHpField.value;
+            const semester = semesterSelect.value;
+            const ipk = document.getElementById('last_ipk').value;
+            const beasiswa = beasiswaSelect.value;
+            const berkas = document.getElementById('berkas').value;
+
+            let errorMsg = '';
+
+            // Check if any field is empty
+            if (nama === '' || email === '' || nomorhp === '' || semester === '' || ipk === '' || berkas === '' || beasiswa === '') {
+                errorMsg += 'Semua kolom harus diisi!\n';
+            }
+
+            // Email validation
+            if (!email.includes('@')) {
+                errorMsg += 'Email tidak valid. Harus mengandung @.\n';
+            }
+
+            // Nomor HP validation
+            if (!/^[0-9]+$/.test(nomorhp)) {
+                errorMsg += 'Nomor HP harus berupa angka.\n';
+            }
+
+            // Show error messages if any
+            if (errorMsg !== '') {
+                alert(errorMsg);
+            }
+        });
     });
+</script>
 
-    // Enable submit button when all required fields are filled
-    document.getElementById('beasiswaForm').addEventListener('input', function () {
-        submitBtn.disabled = !this.checkValidity();
-    });
-
-    // Custom validation for empty fields before submission
-    document.getElementById('beasiswaForm').addEventListener('submit', function (e) {
-        const nama = document.getElementById('nama').value;
-        const email = document.getElementById('email').value;
-        const nomorhp = document.getElementById('noHp').value;
-        const semester = semesterSelect.value;
-        const ipk = document.getElementById('last_ipk').value;
-        const beasiswa = beasiswaSelect.value;
-        const berkas = document.getElementById('berkas').value;
-
-        // Check if any field is empty
-        if (nama === '' || email === '' || nomorhp === '' || semester === '' || ipk === '' || berkas === '' || beasiswa === '') {
-            alert('Semua kolom harus diisi!');
-            e.preventDefault();  // Prevent form submission
-        }
-    });
-});
-
-    </script>
 </body>
 
 <!-- CSS Kustom -->
