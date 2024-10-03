@@ -49,15 +49,3 @@ Melalui sistem ini, mahasiswa dapat melakukan pendaftaran beasiswa dengan lebih 
 
 5. **Menjalankan Aplikasi**:
    - Akses aplikasi melalui browser dengan membuka URL: `http://localhost/pendaftaran_beasiswa`.
-
-## Struktur Proyek
-
-├── assets/               # File CSS, JavaScript, dan gambar
-├── config.php            # File konfigurasi database
-├── index.php             # Halaman utama aplikasi
-├── login.php             # Halaman login
-├── register.php          # Halaman registrasi
-├── dashboard.php         # Halaman dashboard mahasiswa
-└── README.md             # Dokumentasi proyek
-Kontak
-Jika ada pertanyaan atau masalah saat menjalankan aplikasi, silakan hubungi kami melalui rahmasetiani200@gmail.com.
