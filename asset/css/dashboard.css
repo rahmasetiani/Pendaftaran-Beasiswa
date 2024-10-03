@@ -79,3 +79,7 @@ nav ul li a {
 .card ul li {
  margin-bottom: 5px;
 }
+
+.bg-custom {
+    background-color: #4CAF50; /* Contoh warna hijau */
+}

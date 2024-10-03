@@ -17,13 +17,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $message_type = "error"; // Added message type
     }
 }
-?>
+?> 
 
 <!DOCTYPE html>
 <html>
 <head>
     <title>Halaman Utama</title>
     <link rel="stylesheet" href="asset/css/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+
 </head>
 <body>
     <h1>Selamat Datang di Sistem Pendaftaran Beasiswa</h1>
@@ -65,4 +67,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         });
     </script>
 </body>
+
+<!-- CSS Kustom -->
+<style>
+    .bg-custom {
+        background-color: #4CAF50; /* Contoh warna hijau */
+    }
+</style>
+
+<!-- Footer -->
+<footer class="bg-custom text-white text-center py-3">
+    <div class="container">
+        <p>&copy; 2024 Pendaftaran Beasiswa. All Rights Reserved.</p>
+        <p>Hubungi Kami di:
+            <a href="https://www.facebook.com/rahmaaez/" class="text-white">Facebook</a> |
+            <a href="mailto:rahmaseet@example.com" class="text-white">Email</a> |
+            <a href="https://www.instagram.com/rahmaseet/" class="text-white">Instagram</a>
+        </p>
+    </div>
+</footer>
 </html>
